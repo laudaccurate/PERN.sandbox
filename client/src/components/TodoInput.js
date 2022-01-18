@@ -9,10 +9,11 @@ const TodoInput = () => {
     const headers = { "Content-Type": "application/json" };
 
     try {
-      const body = { description };
+      const body = JSON.stringify({ description });
       const response = await axios.post("http://localhost:5000/todos", body, {
         headers,
       });
+      console.log(response);
       window.location = "/";
     } catch (err) {
       console.error(err);
@@ -25,7 +26,7 @@ const TodoInput = () => {
       <form className="d-flex mt-5" onSubmit={onSubmitForm}>
         <input
           type="text"
-          className="form-control"
+          className="form-control mx-2"
           onChange={(e) => setDescription(e.target.value)}
         />
         <button className="btn btn-success"> Add </button>
